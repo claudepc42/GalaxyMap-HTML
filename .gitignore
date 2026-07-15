@@ -1,0 +1,17 @@
+# Backups (local only)
+galaxy-map.backup-*.html
+
+# Local screenshots / working images
+Capture*.PNG
+Screenhot*.PNG
+*.png
+!screenshot.png
+
+# Claude-specific files (local dev only)
+CLAUDE.md
+HANDOFF.md
+memory/
+
+# Scratch
+shot.html
+edgeprofile/
