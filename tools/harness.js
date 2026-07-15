@@ -74,8 +74,9 @@ class Obj3D extends Group {
 }
 const THREE = {
   Scene: Group, Group, Vector2: class{constructor(x,y){this.x=x;this.y=y;}}, Vector3: V3,
-  PerspectiveCamera: class extends Group { constructor(){ super(); this.aspect=1; }
-    updateProjectionMatrix(){} lookAt(){} getWorldDirection(v){ return v.set(0,0,-1); } },
+  PerspectiveCamera: class extends Group { constructor(){ super(); this.aspect=1; this.zoom=1; }
+    updateProjectionMatrix(){} lookAt(){} getWorldDirection(v){ return v.set(0,0,-1); }
+    setViewOffset(){} clearViewOffset(){} },
   WebGLRenderer: class { constructor(){ this.domElement=el(); } setPixelRatio(){} setSize(){} render(){} },
   OrbitControls: class { constructor(){ this.target=new V3(); } update(){} },
   EffectComposer: class { constructor(){ this.passes=[]; } addPass(p){ this.passes.push(p); } setSize(){} render(){} },

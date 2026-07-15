@@ -938,11 +938,12 @@ const gridGroup = new THREE.Group(); galaxy.add(gridGroup);
 window.__lm = LANDMARKS;
 
 // ---------- UI: toggles from config ----------
-const state = {labels:true, markers:true, clouds:true, gaia:true, background:true, bloom:true, rotation:true, fps:true, grid:false, masers:false};
+const state = {labels:true, markers:true, clouds:true, gaia:true, background:true, bloom:true, rotation:true, fps:true, grid:false, masers:false, devshift:true};
 const TOGGLES = [
   ['labels','star labels'], ['markers','landmark markers'], ['clouds','gas & dust'], ['gaia','Gaia stars (real)'],
   ['background','background stars'], ['bloom','bloom'], ['rotation','galaxy rotation'], ['fps','fps counter'],
   ['grid','distance grid (15 kly rings)'], ['masers','measured masers (Reid 2019)'],
+  ['devshift','dev menu shifts view'],
 ];
 const togglesEl = document.getElementById('toggles');
 TOGGLES.forEach(([key,text])=>{
@@ -960,6 +961,7 @@ function applyState(){
   bgStars.visible = state.background;
   gridGroup.visible = state.grid;
   maserPts.visible = state.masers;
+  updateDevView();
   document.getElementById('fps').classList.toggle('hidden', !state.fps);
   labelDivs.forEach(d=>d.style.display = state.labels?'':'none');
 }
@@ -967,7 +969,25 @@ function applyState(){
 // ---------- dev tuning menu ----------
 const devEl = document.getElementById('dev'), devToggle = document.getElementById('dev-toggle');
 devToggle.onclick = ()=>{ devEl.classList.toggle('open');
-  document.getElementById('dev-arrow').textContent = devEl.classList.contains('open') ? '\u25be' : '\u25b8'; };
+  document.getElementById('dev-arrow').textContent = devEl.classList.contains('open') ? '\u25be' : '\u25b8';
+  updateDevView(); };
+
+// when the dev menu is open (and the 'devshift' toggle is on), shift the
+// rendered view right of the panel and zoom out so the whole galaxy stays
+// visible. Uses camera.setViewOffset + camera.zoom \u2014 the orbit target never
+// moves, so rotation still pivots on the galaxy center. Fully reversible.
+function updateDevView(){
+  const open = state.devshift && devEl.classList.contains('open');
+  if (open){
+    const pw = Math.min(document.getElementById('devpanel').getBoundingClientRect().width + 16, innerWidth*0.72);
+    camera.setViewOffset(innerWidth, innerHeight, -pw/2, 0, innerWidth, innerHeight);
+    camera.zoom = Math.max(0.3, (innerWidth - pw)/innerWidth);
+  } else {
+    camera.clearViewOffset();
+    camera.zoom = 1;
+  }
+  camera.updateProjectionMatrix();
+}
 
 function applyLive(){
   starMat.uniforms.minPt.value = PARAMS.minPt; gaiaMat.uniforms.minPt.value = PARAMS.minPt;
@@ -1351,6 +1371,7 @@ animate();
 addEventListener('resize', ()=>{
   camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight);
+  updateDevView(); // re-derive the dev-panel view offset for the new size
 });
 
 // photo mode: press P — hides all UI, saves a PNG of the current view, restores
