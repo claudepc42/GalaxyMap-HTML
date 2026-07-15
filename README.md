@@ -2,6 +2,10 @@
 
 An interactive, explorable 3D map of the Milky Way in a single HTML file. Procedurally generated stars over an arm skeleton digitized from the NASA/JPL-Caltech reference map, blended with real astronomical data — actual Gaia stars, measured maser parallaxes, and famous deep-sky objects at their true positions.
 
+### 🌌 **[Explore it live →](https://claudepc42.github.io/GalaxyMap-HTML/)**
+
+No install needed — runs in any modern browser, desktop or mobile.
+
 ![Version](https://img.shields.io/badge/version-0.5-orange) ![Three.js](https://img.shields.io/badge/three.js-r128-blue) ![Single file](https://img.shields.io/badge/single%20file-no%20build-green) ![WebGL](https://img.shields.io/badge/WebGL-990000?logo=webgl&logoColor=white)
 
 ---
