@@ -973,18 +973,28 @@ devToggle.onclick = ()=>{ devEl.classList.toggle('open');
   updateDevView(); };
 
 // when the dev menu is open (and the 'devshift' toggle is on), shift the
-// rendered view right of the panel and zoom out so the whole galaxy stays
-// visible. Uses camera.setViewOffset + camera.zoom \u2014 the orbit target never
-// moves, so rotation still pivots on the galaxy center. Fully reversible.
+// rendered view right of the panel and dolly the camera out so the whole
+// galaxy stays visible. The shift is camera.setViewOffset (pure projection
+// window move \u2014 no visual side effects); the zoom-out is a physical dolly,
+// NOT camera.zoom: point-size shaders derive star size from camera distance,
+// so projection zoom shrinks the scene but not the stars, which stack up
+// additively and blow out the brightness. The orbit target never moves, so
+// rotation still pivots on the galaxy center.
+let devDolly = 1; // dolly factor currently applied
 function updateDevView(){
   const open = state.devshift && devEl.classList.contains('open');
+  let want = 1;
   if (open){
     const pw = Math.min(document.getElementById('devpanel').getBoundingClientRect().width + 16, innerWidth*0.72);
     camera.setViewOffset(innerWidth, innerHeight, -pw/2, 0, innerWidth, innerHeight);
-    camera.zoom = Math.max(0.3, (innerWidth - pw)/innerWidth);
+    want = Math.min(3.0, innerWidth/Math.max(1, innerWidth - pw));
   } else {
     camera.clearViewOffset();
-    camera.zoom = 1;
+  }
+  const f = want/devDolly;
+  if (Math.abs(f - 1) > 1e-9){
+    camera.position.sub(controls.target).multiplyScalar(f).add(controls.target);
+    devDolly = want;
   }
   camera.updateProjectionMatrix();
 }
