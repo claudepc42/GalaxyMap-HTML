@@ -28,7 +28,7 @@ setTimeout(()=>{{
   }});
   state.labels=false; state.markers=false; state.fps=false; applyState();
   galaxy.rotation.y = 0;{spine_params}
-  camera.position.set(0, -{h}, 0.001);  // below the plane = NASA orientation
+  camera.position.set(0, -{h}, -0.001);  // below the plane = NASA orientation
   controls.target.set(0,0,0); controls.update();
   applyState();
 }}, 800);
