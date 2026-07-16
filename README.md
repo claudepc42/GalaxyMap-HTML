@@ -6,7 +6,7 @@ An interactive, explorable 3D map of the Milky Way in a single HTML file. Proced
 
 No install needed — runs in any modern browser, desktop or mobile.
 
-![Version](https://img.shields.io/badge/version-0.6-orange) ![Three.js](https://img.shields.io/badge/three.js-r128-blue) ![Single file](https://img.shields.io/badge/single%20file-no%20build-green) ![WebGL](https://img.shields.io/badge/WebGL-990000?logo=webgl&logoColor=white)
+![Version](https://img.shields.io/badge/version-0.7-orange) ![Three.js](https://img.shields.io/badge/three.js-r128-blue) ![Single file](https://img.shields.io/badge/single%20file-no%20build-green) ![WebGL](https://img.shields.io/badge/WebGL-990000?logo=webgl&logoColor=white)
 
 ---
 
@@ -22,6 +22,9 @@ Open `galaxy-map.html` in any modern browser. No build step, no server, no insta
 - **~439,000 real stars** from Gaia DR3 — the brightest well-measured stars within ~5,000 ly of the Sun (parallax S/N ≥ 10) — plus the 50 brightest naked-eye stars (Sirius, Alpha Centauri, Canopus…) from Hipparcos data, which Gaia's detectors can't observe
 - **199 measured maser parallaxes** (Reid et al. 2019) — the actual VLBI data points behind modern spiral-arm models, color-coded by arm (toggle)
 - **2,214 classical Cepheids** (Skowron et al. 2019, OGLE) with period-luminosity distances spanning the whole disk — toggle them on and tilt the view to see the real warp of the galaxy, color-coded by height above/below the plane
+- **165 globular clusters** (Baumgardt & Vasiliev) — the real halo swarm floating above, below, and behind the disk, with the famous ones labeled
+- **1,413 WISE H II star-forming regions** with measured distances (Anderson et al. 2014), density-adjustable in the dev panel
+- **11 dwarf satellite galaxies** from the LMC out to Leo I
 - **Real deep-sky objects at true positions**: 16 H II regions (Orion, Carina, Eagle…), supernova remnants (Crab, Vela, Cas A…), open clusters (Pleiades, Double Cluster…), globular clusters floating in the halo (Omega Centauri, 47 Tucanae…), planetary nebulae, the Coalsack, and the Magellanic Clouds
 - **Dust lanes and H II knots extracted from the reference image itself** — the painting's own texture at its own coordinates
 - Clickable/searchable landmarks, free-fly and orbit camera, heliocentric distance-grid overlay, photo mode, and a ~60-slider dev tuning panel
@@ -45,6 +48,8 @@ Open `galaxy-map.html` in any modern browser. No build step, no server, no insta
 - **Gaia DR3** (ESA) — solar-neighborhood star positions, colors, magnitudes
 - **Reid et al. 2019**, ApJ 885, 131 — maser parallaxes and spiral-arm fits
 - **HYG Database** (D. Nash) — bright-star supplement
+- **Baumgardt & Vasiliev** globular cluster catalog — halo cluster positions and distances
+- **Anderson et al. 2014** (WISE) — H II region census
 - Deep-sky object coordinates and distances from standard literature values
 
 The `tools/` directory contains the extraction and verification pipeline used to digitize the arm skeleton from the reference image (image processing, transform calibration, geometry checks, and a Node stub-DOM test harness).

@@ -130,7 +130,7 @@ const verify = `
   out.push('gaiaPts=' + ga.length/3 + ' (expect ' + (GDEC + BRIGHT.length) + ') NaN=' + gnan);
   const i0 = GDEC*3;
   out.push('Sirius offset from Sun=' + Math.hypot(ga[i0]-SUN.x, ga[i0+1]-SUN.y, ga[i0+2]-SUN.z).toFixed(3) + ' u (expect ~0.09)');
-  const nHII = (PARAMS.hiiCount|0) + Math.round(PARAMS.hiiCount*0.6) + REAL_HII.length + REAL_DSO.length + IMG_HII.length;
+  const nHII = (PARAMS.hiiCount|0) + Math.round(PARAMS.hiiCount*0.6) + REAL_HII.length + REAL_DSO.length + IMG_HII.length + Math.round(NEBULAE.length*PARAMS.nebDensity);
   out.push('hii sprites=' + hiiList.length + ' (expect ' + nHII + ')');
   out.push('landmarks=' + LANDMARKS.length);
   const spurC = CHAINS.find(c=>c.key==='spur');

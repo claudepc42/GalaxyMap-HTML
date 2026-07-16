@@ -7,6 +7,9 @@ Screenhot*.PNG
 *.png
 !screenshot.png
 
+# Reference images (NASA/JPL-Caltech; kept local, not redistributed)
+*.webp
+
 # Claude-specific files (local dev only)
 CLAUDE.md
 HANDOFF.md
