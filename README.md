@@ -6,7 +6,7 @@ An interactive, explorable 3D map of the Milky Way in a single HTML file. Proced
 
 No install needed — runs in any modern browser, desktop or mobile.
 
-![Version](https://img.shields.io/badge/version-0.5-orange) ![Three.js](https://img.shields.io/badge/three.js-r128-blue) ![Single file](https://img.shields.io/badge/single%20file-no%20build-green) ![WebGL](https://img.shields.io/badge/WebGL-990000?logo=webgl&logoColor=white)
+![Version](https://img.shields.io/badge/version-0.6-orange) ![Three.js](https://img.shields.io/badge/three.js-r128-blue) ![Single file](https://img.shields.io/badge/single%20file-no%20build-green) ![WebGL](https://img.shields.io/badge/WebGL-990000?logo=webgl&logoColor=white)
 
 ---
 
@@ -19,8 +19,9 @@ No install needed — runs in any modern browser, desktop or mobile.
 Open `galaxy-map.html` in any modern browser. No build step, no server, no install — the only external dependency is Three.js from a CDN.
 
 - **~130,000 procedural stars** (up to 1,000,000 via slider) on a spiral-arm skeleton traced from the NASA/JPL-Caltech annotated Milky Way map — arm positions, junctions, breaks, and fragments match the reference
-- **~57,500 real stars** from Gaia DR3 around the Sun, plus the 50 brightest naked-eye stars (Sirius, Alpha Centauri, Canopus…) from Hipparcos data, which Gaia's detectors can't observe
+- **~439,000 real stars** from Gaia DR3 — the brightest well-measured stars within ~5,000 ly of the Sun (parallax S/N ≥ 10) — plus the 50 brightest naked-eye stars (Sirius, Alpha Centauri, Canopus…) from Hipparcos data, which Gaia's detectors can't observe
 - **199 measured maser parallaxes** (Reid et al. 2019) — the actual VLBI data points behind modern spiral-arm models, color-coded by arm (toggle)
+- **2,214 classical Cepheids** (Skowron et al. 2019, OGLE) with period-luminosity distances spanning the whole disk — toggle them on and tilt the view to see the real warp of the galaxy, color-coded by height above/below the plane
 - **Real deep-sky objects at true positions**: 16 H II regions (Orion, Carina, Eagle…), supernova remnants (Crab, Vela, Cas A…), open clusters (Pleiades, Double Cluster…), globular clusters floating in the halo (Omega Centauri, 47 Tucanae…), planetary nebulae, the Coalsack, and the Magellanic Clouds
 - **Dust lanes and H II knots extracted from the reference image itself** — the painting's own texture at its own coordinates
 - Clickable/searchable landmarks, free-fly and orbit camera, heliocentric distance-grid overlay, photo mode, and a ~60-slider dev tuning panel
